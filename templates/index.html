@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Rooms</h2>
+      <ul id="roomList">
+        <li onclick="switchRoom('General')"># General</li>
+        <li onclick="switchRoom('Gaming')"># Gaming</li>
+        <li onclick="switchRoom('Study')"># Study</li>
+      </ul>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat">
+      <div class="header">
+        <input id="username" placeholder="Username">
+        <select id="avatar">
+          <option value="👨">👨</option>
+          <option value="👩">👩</option>
+          <option value="🧙">🧙</option>
+          <option value="🤖">🤖</option>
+        </select>
+        <button onclick="connectToRoom()">Join Chat</button>
+        <span id="currentRoom">Room: General</span>
+      </div>
+
+      <ul id="messages"></ul>
+
+      <div class="input-area">
+        <input id="message" placeholder="Type message...">
+        <button onclick="sendMessage()">Send</button>
+        <input type="file" id="fileInput">
+        <button onclick="uploadFile()">📎</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
